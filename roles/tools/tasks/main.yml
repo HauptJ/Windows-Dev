@@ -1,0 +1,81 @@
+---
+  # Installs various tools and utilities
+
+- name: Install the latest version of git
+  win_chocolatey:
+    name: git
+    state: latest
+
+- name: Install the latest version of cmder
+  win_chocolatey:
+    name: cmder
+    state: latest
+
+- name: Install the latest version of curl
+  win_chocolatey:
+    name: curl
+    state: latest
+
+- name: Install the latest version of wget
+  win_chocolatey:
+    name: wget
+    state: latest
+
+- name: Install the latest PDF Utilites
+  win_chocolatey:
+    name: {{ item }}
+    state: latest
+  with_items:
+    - sumatrapdf
+    - pdfcreator
+
+- name: Install the latest version of calibre
+  win_chocolatey:
+    name: calibre
+    state: latest
+
+- name: Install the latest and greatest Video tools
+  win_chocolatey:
+    name: {{ item }}
+    state: latest
+  with_items:
+    - ffmpeg
+    - winff
+    - openshot
+    - activepresenter
+    - k-litecodecpackmega
+    - vlc
+
+- name: Install the latest and greatest Image tools
+  win_chocolatey:
+    name: {{ item }}
+    state: latest
+  with_items:
+    - imagemagick
+    - greenshot
+    - gimp
+    - irfanview
+    - irfanviewplugins
+
+- name: Install the latest version of HexChat
+  win_chocolatey:
+    name: hexchat
+    state: latest
+
+- name: Install the latest version of Steam
+  win_chocolatey:
+    name: steam
+    state: latest
+
+- name: Install the latest and greatest of TeamViewer
+  win_chocolatey:
+    name: {{ item }}
+    state: latest
+  with_items:
+    - teamviewer
+    - teamviewer.host
+
+- name: Install the latest and greatest of Skype
+  win_chocolatey:
+    name: skype
+    state: latest

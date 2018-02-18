@@ -1,0 +1,46 @@
+---
+  # Installs magical cloud things
+
+- name: Install the latest and greatest HashiCorp utilities
+  win_chocolatey:
+    name: {{ item }}
+    state: latest
+  with_items:
+    - vagrant
+    - packer
+    - terraform
+    - vault
+
+- name: Install Hyperv Windows Feature
+  win_feature:
+    name: Hyper-V
+    state: present
+    include_sub_features: True
+    include_management_tools: True
+  register: hv
+
+- name: Reboot, only if required.
+  win_reboot:
+  when: hv.reboot_required
+  register: hv_reboot_status
+
+- name: Copy devmode.ps1
+  win_copy:
+    src: files/devmode.ps1
+    dest: c:\temp\
+
+- name: Execute devmode.ps1
+  win_shell: powershell -NoLogo -ExecutionPolicy Unrestricted -File "C:\temp\devmode.ps1"
+
+- name: Install Windows Subsystem for Linux
+  win_feature:
+    name: Windows-Subsystem-Linux
+    state: present
+    include_sub_features: True
+    include_management_tools: True
+  register: wsl
+
+- name: Reboot, only if required.
+  win_reboot:
+  when: wsl.reboot_required
+  register: wsl_reboot_status

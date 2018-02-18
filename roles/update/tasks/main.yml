@@ -1,0 +1,3 @@
+---
+  # Windows updates
+- import_tasks: install_updates.yml
