@@ -1,0 +1,28 @@
+---
+  # Finalize setup
+
+- name: Install the latest NVIDIA driver
+  win_chocolatey:
+    name: geforce-game-ready-driver
+    state: latest
+  when: NVIDIA_GPU == true
+
+#- name: Install the latest version of Geforce Experience
+#  win_chocolatey:
+#    name: geforce-experience
+#    state: latest
+#  when: NVIDIA_GPU == true
+
+- name: Copy file to disable Autologin of Administrator account
+  win_copy:
+    src: files/DisableAutoLogin.ps1
+    dest: "{{ temp_dir }}"
+
+- name: Execute DisableAutoLogin.ps1
+  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}DisableAutoLogin.ps1"
+
+- name: Reboot system
+  win_reboot:
+      reboot_timeout_sec: 3600
+      connect_timeout_sec: 3600
+      shutdown_timeout_sec: 3600

@@ -1,0 +1,37 @@
+---
+  # Installs IDEs and Text Editors
+
+- name: Install the latest version of Atom
+  win_chocolatey:
+    name: atom
+    state: latest
+
+- name: Install the latest version of NotePad++
+  win_chocolatey:
+    name: notepadplusplus
+    state: latest
+
+- name: Install the latest version of Netbeans
+  win_chocolatey:
+    name: netbeans
+    state: latest
+
+- name: Install the latest version of Vim
+  win_chocolatey:
+    name: vim
+    state: latest
+
+- name: Install the latest version of visualstudio2017enterprise
+  win_chocolatey:
+    name: visualstudio2017enterprise
+    state: latest
+
+#- name: Install the latest version of TexStudio
+#  win_chocolatey:
+#    name: miktex
+#    state: latest
+
+#- name: Install the latest version of texmaker
+#  win_chocolatey:
+#    name: texmaker
+#    state: latest

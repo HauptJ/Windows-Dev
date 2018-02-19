@@ -1,0 +1,9 @@
+temp_dir: C:\WINRM\
+
+NVIDIA_GPU: true
+
+win_update_categories:
+  - CriticalUpdates
+  - DefinitionUpdates
+  - SecurityUpdates
+  - Updates

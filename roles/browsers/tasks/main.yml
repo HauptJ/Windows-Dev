@@ -1,0 +1,17 @@
+---
+  # Installs web browsers
+
+- name: Install the latest version of Chrome
+  win_chocolatey:
+    name: googlechrome
+    state: latest
+
+- name: Install the latest version of WaterFox
+  win_chocolatey:
+    name: waterfox
+    state: latest
+
+- name: Install the latest version of FireFox
+  win_chocolatey:
+    name: firefox
+    state: latest

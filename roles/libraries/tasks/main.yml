@@ -1,0 +1,43 @@
+---
+  # Installs programming language and libraries
+
+- name: Install the latest and greatest of Python
+  win_chocolatey:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - python3
+    - python2
+
+- name: Install the latest version of Ruby
+  win_chocolatey:
+    name: ruby
+    state: latest
+
+- name: Install the latest and greatest of NodeJS
+  win_chocolatey:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - nodejs
+    - yarn
+
+- name: Install the latest version of golang
+  win_chocolatey:
+    name: golang
+    state: latest
+
+- name: Install the latest and greatest of Java
+  win_chocolatey:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - jdk8
+    - jdk9
+    - maven
+    - gradle
+
+#- name: Install the latest version of miktex LaTex
+#  win_chocolatey:
+#    name: miktex
+#    state: latest
