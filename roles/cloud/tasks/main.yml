@@ -1,9 +1,59 @@
 ---
   # Installs magical cloud things
 
+#- name: Install Hyperv Windows Feature
+#  win_feature:
+#    name: Hyper-V
+#    state: present
+#    include_sub_features: True
+#    include_management_tools: True
+#  register: hv
+
+#- name: Reboot, only if required.
+#  win_reboot:
+#      reboot_timeout_sec: 3600
+#      connect_timeout_sec: 3600
+#      shutdown_timeout_sec: 3600
+#  when: hv.reboot_required
+#  register: hv_reboot_status
+
+- name: Copy devmode.ps1
+  win_copy:
+    src: files/devmode.ps1
+    dest: "{{ temp_dir }}"
+
+- name: Execute devmode.ps1
+  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}devmode.ps1"
+
+#- name: Install Windows Subsystem for Linux
+#  win_feature:
+#    name: Windows-Subsystem-Linux
+#    state: present
+#    include_sub_features: True
+#    include_management_tools: True
+#  register: wsl
+
+- name: Reboot since required
+  win_reboot:
+      reboot_timeout_sec: 3600
+      connect_timeout_sec: 3600
+      shutdown_timeout_sec: 3600
+
+- name: Install the latest and greatest container tools
+  win_chocolatey:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker-for-windows
+    - docker-compose
+    - kubernetes-cli
+    - minikube
+    - kubernetes-kompose
+    - kubernetes-helm
+
 - name: Install the latest and greatest HashiCorp utilities
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - vagrant
@@ -11,36 +61,23 @@
     - terraform
     - vault
 
-- name: Install Hyperv Windows Feature
-  win_feature:
-    name: Hyper-V
-    state: present
-    include_sub_features: True
-    include_management_tools: True
-  register: hv
+- name: Install the OpenStack CLI
+  win_command: pip install python-openstackclient
 
-- name: Reboot, only if required.
-  win_reboot:
-  when: hv.reboot_required
-  register: hv_reboot_status
+- name: Install the AWS CLI
+  win_command: pip install awscli
 
-- name: Copy devmode.ps1
-  win_copy:
-    src: files/devmode.ps1
-    dest: c:\temp\
+- name: Install CloudFlare API
+  win_command: pip install cloudflare
 
-- name: Execute devmode.ps1
-  win_shell: powershell -NoLogo -ExecutionPolicy Unrestricted -File "C:\temp\devmode.ps1"
+- name: Install Digitalocean Python API
+  win_command: pip install dopy
 
-- name: Install Windows Subsystem for Linux
-  win_feature:
-    name: Windows-Subsystem-Linux
-    state: present
-    include_sub_features: True
-    include_management_tools: True
-  register: wsl
+- name: Install DigitalOcean GO Doctl
+  win_shell: go get -u github.com/digitalocean/doctl/cmd/doctl
 
-- name: Reboot, only if required.
-  win_reboot:
-  when: wsl.reboot_required
-  register: wsl_reboot_status
+- name: Install CloudFlare GO API
+  win_shell: go get -u github.com/cloudflare/cloudflare-go
+
+- name: Install CloudFlare GO flarectl
+  win_shell: go get -u github.com/cloudflare/cloudflare-go/...

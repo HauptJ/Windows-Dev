@@ -3,7 +3,7 @@
 
 - name: Install the latest and greatest of Python
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - python3
@@ -16,15 +16,20 @@
 
 - name: Install the latest and greatest of NodeJS
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - nodejs
     - yarn
 
+- name: Install the latest version of golang
+  win_chocolatey:
+    name: golang
+    state: latest
+
 - name: Install the latest and greatest of Java
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - jdk8
@@ -32,7 +37,7 @@
     - maven
     - gradle
 
-- name: Install the latest version of miktex LaTex
-  win_chocolatey:
-    name: miktex
-    state: latest
+#- name: Install the latest version of miktex LaTex
+#  win_chocolatey:
+#    name: miktex
+#    state: latest

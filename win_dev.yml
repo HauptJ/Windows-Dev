@@ -1,0 +1,15 @@
+---
+- name: Provisions Windows Environment
+  hosts: windows
+  strategy: debug
+#  become: yes
+#  become_method: runas
+#  become_user: Administrator
+
+  roles:
+    #- libraries
+    #- tools
+    #- editors
+    #- browsers
+    - cloud
+    - finalize

@@ -1,3 +1,16 @@
 ---
   # Windows updates
-- import_tasks: install_updates.yml
+#- import_tasks: install_updates.yml
+
+- name: Checking for Available Windows Updates
+  win_updates:
+    category_names:
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
+
+- name: Reboot since required for updates
+  win_reboot:
+    reboot_timeout_sec: 3600
+    connect_timeout_sec: 3600
+    shutdown_timeout_sec: 3600

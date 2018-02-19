@@ -16,6 +16,9 @@
     register: installed_updates
   - name: Reboot, only if required.
     win_reboot:
+      reboot_timeout_sec: 3600
+      connect_timeout_sec: 3600
+      shutdown_timeout_sec: 3600
     when: installed_updates.reboot_required
     register: reboot_status
   when: (available_updates.found_update_count|int >= 1)

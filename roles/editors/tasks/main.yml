@@ -26,12 +26,12 @@
     name: visualstudio2017enterprise
     state: latest
 
-- name: Install the latest version of TexStudio
-  win_chocolatey:
-    name: miktex
-    state: latest
+#- name: Install the latest version of TexStudio
+#  win_chocolatey:
+#    name: miktex
+#    state: latest
 
-- name: Install the latest version of texmaker
-  win_chocolatey:
-    name: texmaker
-    state: latest
+#- name: Install the latest version of texmaker
+#  win_chocolatey:
+#    name: texmaker
+#    state: latest

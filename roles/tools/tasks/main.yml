@@ -6,9 +6,19 @@
     name: git
     state: latest
 
+- name: Install the latest version of openssh
+  win_chocolatey:
+    name: openssh
+    state: latest
+
 - name: Install the latest version of cmder
   win_chocolatey:
     name: cmder
+    state: latest
+
+- name: Install the latest version of winsshterm
+  win_chocolatey:
+    name: winsshterm
     state: latest
 
 - name: Install the latest version of curl
@@ -23,7 +33,7 @@
 
 - name: Install the latest PDF Utilites
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - sumatrapdf
@@ -36,7 +46,7 @@
 
 - name: Install the latest and greatest Video tools
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - ffmpeg
@@ -48,7 +58,7 @@
 
 - name: Install the latest and greatest Image tools
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - imagemagick
@@ -69,7 +79,7 @@
 
 - name: Install the latest and greatest of TeamViewer
   win_chocolatey:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - teamviewer
