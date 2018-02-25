@@ -26,9 +26,10 @@
     name: visualstudio2017enterprise
     state: latest
 
+# miktex package is currently broken
 #- name: Install the latest version of TexStudio
 #  win_chocolatey:
-#    name: miktex
+#    name: texstudio
 #    state: latest
 
 #- name: Install the latest version of texmaker

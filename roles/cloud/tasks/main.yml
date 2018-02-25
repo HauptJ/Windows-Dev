@@ -51,6 +51,13 @@
     - kubernetes-kompose
     - kubernetes-helm
 
+# This may break kubernetes-cli???
+- name: Install version 0.0.0.20171229 of Google Cloud SDK
+  win_chocolatey:
+    name: gcloudsdk
+    version: 0.0.0.20171229
+  when: GCLOUD == true
+
 - name: Install the latest and greatest HashiCorp utilities
   win_chocolatey:
     name: "{{ item }}"

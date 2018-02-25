@@ -9,14 +9,14 @@ if (-not(Test-Path -Path $RegistryKeyPath)) {
     New-Item -Path $RegistryKeyPath -ItemType Directory -Force
 }
 
+# Add registry value to enable Developer Mode
+New-ItemProperty -Path $RegistryKeyPath -Name AllowDevelopmentWithoutDevLicense -PropertyType DWORD -Value 1
+
 ##### Install Hyper V #####
 
 # Install the entire Hyper-V stack (hypervisor, services, and tools)
 # Source: https://www.altaro.com/hyper-v/install-hyper-v-powershell-module/
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -NoRestart
-
-# Add registry value to enable Developer Mode
-New-ItemProperty -Path $RegistryKeyPath -Name AllowDevelopmentWithoutDevLicense -PropertyType DWORD -Value 1
 
 ##### Install Windows Subsystem for Linux #####
 

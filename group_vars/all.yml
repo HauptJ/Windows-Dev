@@ -1,5 +1,6 @@
 temp_dir: C:\WINRM\
 
+GCLOUD: true
 NVIDIA_GPU: true
 
 win_update_categories:
