@@ -23,4 +23,4 @@
     dest: "{{ temp_dir }}"
 
 - name: Execute explorercfg.ps1
-  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}explorercfg.ps1 -Force"
+  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}explorercfg.ps1" -Force
