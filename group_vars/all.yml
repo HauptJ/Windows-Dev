@@ -1,10 +1,12 @@
 temp_dir: C:\WINRM\
 
+office_retries: 600
+
 GCLOUD: true
 NVIDIA_GPU: true
 
-win_update_categories:
-  - CriticalUpdates
-  - DefinitionUpdates
-  - SecurityUpdates
-  - Updates
+#win_update_categories:
+#  - CriticalUpdates
+#  - DefinitionUpdates
+#  - SecurityUpdates
+#  - Updates

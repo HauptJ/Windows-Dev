@@ -24,3 +24,6 @@
 
 - name: Execute explorercfg.ps1
   win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}explorercfg.ps1" -Force
+
+- name: Install Chocolatey
+  win_shell: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))

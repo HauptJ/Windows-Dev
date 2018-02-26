@@ -16,6 +16,11 @@
     name: cmder
     state: latest
 
+- name: Install the latest version of conemu
+  win_chocolatey:
+    name: conemu
+    state: latest
+
 - name: Install the latest version of winsshterm
   win_chocolatey:
     name: winsshterm
@@ -29,6 +34,11 @@
 - name: Install the latest version of wget
   win_chocolatey:
     name: wget
+    state: latest
+
+- name: Install the latest version of heidisql
+  win_chocolatey:
+    name: heidisql
     state: latest
 
 - name: Install the latest PDF Utilites
