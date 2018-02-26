@@ -40,7 +40,7 @@
 - name: Download MS Office w/ Visio 2016
   win_get_url:
     url: https://officecdn.microsoft.com/db/492350F6-3A01-4F97-B9C0-C7C6DDF67D60/media/en-US/VisioProRetail.img
-    dest: "{{ temp_dir }}\\VisioProRetail.img"
+    dest: "{{ temp_dir }}VisioProRetail.img"
   async: 1000
   poll: 0
   register: office_sleeper
