@@ -7,9 +7,10 @@
 #  become_user: Administrator
 
   roles:
-    #- libraries
-    #- tools
-    #- editors
-    #- browsers
+    - initialize
+    - libraries
+    - tools
+    - editors
+    - browsers
     - cloud
     - finalize
