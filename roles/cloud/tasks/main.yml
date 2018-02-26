@@ -1,22 +1,6 @@
 ---
   # Installs magical cloud things
 
-#- name: Install Hyperv Windows Feature
-#  win_feature:
-#    name: Hyper-V
-#    state: present
-#    include_sub_features: True
-#    include_management_tools: True
-#  register: hv
-
-#- name: Reboot, only if required.
-#  win_reboot:
-#      reboot_timeout_sec: 3600
-#      connect_timeout_sec: 3600
-#      shutdown_timeout_sec: 3600
-#  when: hv.reboot_required
-#  register: hv_reboot_status
-
 - name: Copy devmode.ps1
   win_copy:
     src: files/devmode.ps1
@@ -24,14 +8,6 @@
 
 - name: Execute devmode.ps1
   win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}devmode.ps1"
-
-#- name: Install Windows Subsystem for Linux
-#  win_feature:
-#    name: Windows-Subsystem-Linux
-#    state: present
-#    include_sub_features: True
-#    include_management_tools: True
-#  register: wsl
 
 - name: Reboot since required
   win_reboot:
@@ -79,12 +55,3 @@
 
 - name: Install Digitalocean Python API
   win_command: pip install dopy
-
-- name: Install DigitalOcean GO Doctl
-  win_shell: go get -u github.com/digitalocean/doctl/cmd/doctl
-
-- name: Install CloudFlare GO API
-  win_shell: go get -u github.com/cloudflare/cloudflare-go
-
-- name: Install CloudFlare GO flarectl
-  win_shell: go get -u github.com/cloudflare/cloudflare-go/...

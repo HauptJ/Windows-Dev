@@ -77,15 +77,12 @@
     name: steam
     state: latest
 
-- name: Install the latest and greatest of TeamViewer
+- name: Install the latest version of Teamviewer
   win_chocolatey:
-    name: "{{ item }}"
+    name: teamviewer
     state: latest
-  with_items:
-    - teamviewer
-    #- teamviewer.host
 
-- name: Install the latest and greatest of Skype
+- name: Install the latest version of Skype
   win_chocolatey:
     name: skype
     state: latest

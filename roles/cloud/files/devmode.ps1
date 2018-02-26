@@ -1,4 +1,7 @@
-# Enables HyperV and Developer Mode
+############################################################
+# Powershell script to enable Hyper-V and Developer Mode
+# Author: Joshua Haupt josh@hauptj.com Date: 25.2.2018
+############################################################
 
 ##### Enable Developer Mode #####
 

@@ -1,0 +1,26 @@
+---
+  # System settings, users, etc
+
+- name: Copy file to configure power settings
+  win_copy:
+    src: files/powercfg.ps1
+    dest: "{{ temp_dir }}"
+
+- name: Execute powercfg.ps1
+  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}powercfg.ps1"
+
+- name: Copy file to configure time and date settings
+  win_copy:
+    src: files/timecfg.ps1
+    dest: "{{ temp_dir }}"
+
+- name: Execute timecfg.ps1
+  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}timecfg.ps1"
+
+- name: Copy file to configure explorer settings
+  win_copy:
+    src: files/explorercfg.ps1
+    dest: "{{ temp_dir }}"
+
+- name: Execute explorercfg.ps1
+  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}explorercfg.ps1 -Force"

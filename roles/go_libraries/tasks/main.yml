@@ -1,0 +1,11 @@
+---
+  # Installs go libraries
+
+- name: Install DigitalOcean GO Doctl
+  win_shell: go get -u github.com/digitalocean/doctl/cmd/doctl
+
+- name: Install CloudFlare GO API
+  win_shell: go get -u github.com/cloudflare/cloudflare-go
+
+- name: Install CloudFlare GO flarectl
+  win_shell: go get -u github.com/cloudflare/cloudflare-go/...
