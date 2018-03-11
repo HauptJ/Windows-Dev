@@ -1,7 +1,8 @@
 ---
-- name: Provisions Windows Environment
+- name: Provisions Windows 10 Environment
   hosts: windows
   strategy: debug
+  ignore_errors: True
 #  become: yes
 #  become_method: runas
 #  become_user: Administrator
@@ -13,4 +14,6 @@
     - editors
     - browsers
     - cloud
+    - git
+    - office
     - finalize

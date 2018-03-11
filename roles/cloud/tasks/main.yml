@@ -28,10 +28,10 @@
     - kubernetes-helm
 
 # This may break kubernetes-cli???
-- name: Install version 0.0.0.20171229 of Google Cloud SDK
+- name: Install the latest version of Google Cloud SDK
   win_chocolatey:
     name: gcloudsdk
-    version: 0.0.0.20171229
+    state: latest
   when: GCLOUD == true
 
 - name: Install the latest and greatest HashiCorp utilities
@@ -55,3 +55,9 @@
 
 - name: Install Digitalocean Python API
   win_command: pip install dopy
+
+- name: Download Ansible Docker
+  win_shell: docker pull hauptj/ansible-fedora-27
+  args:
+    chdir: "{{ temp_dir }}"
+  ignore_errors: True
