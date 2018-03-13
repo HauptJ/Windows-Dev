@@ -61,6 +61,12 @@
     name: foobar2000
     state: latest
 
+- name: Install the latest version of Spotify
+  win_chocolatey:
+    name: spotify
+    state: latest
+    ignore_checksums: yes
+
 - name: Install the latest and greatest Video tools
   win_chocolatey:
     name: "{{ item }}"
@@ -92,11 +98,6 @@
 - name: Install the latest version of Steam
   win_chocolatey:
     name: steam
-    state: latest
-
-- name: Install the latest version of Spotify
-  win_chocolatey:
-    name: spotify
     state: latest
 
 - name: Install the latest version of Teamviewer
