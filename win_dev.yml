@@ -9,11 +9,11 @@
 
   roles:
     - initialize
+    - office
     - libraries
     - tools
+    - git
     - editors
     - browsers
     - cloud
-    - git
-    - office
     - finalize

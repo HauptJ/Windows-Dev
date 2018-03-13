@@ -1,10 +1,11 @@
 ---
   # Installs various tools and utilities
 
-- name: Install the latest version of git
-  win_chocolatey:
-    name: git
-    state: latest
+# Replaced with git role
+#- name: Install the latest version of git
+#  win_chocolatey:
+#    name: git
+#    state: latest
 
 - name: Install the latest version of openssh
   win_chocolatey:
@@ -54,6 +55,11 @@
     name: calibre
     state: latest
 
+- name: Install the latest version of foobar2000
+  win_chocolatey:
+    name: foobar2000
+    state: latest
+
 - name: Install the latest and greatest Video tools
   win_chocolatey:
     name: "{{ item }}"
@@ -92,7 +98,8 @@
     name: teamviewer
     state: latest
 
-- name: Install the latest version of Skype
-  win_chocolatey:
-    name: skype
-    state: latest
+# Broken as of 12.3.2018
+#- name: Install the latest version of Skype
+#  win_chocolatey:
+#    name: skype
+#    state: latest

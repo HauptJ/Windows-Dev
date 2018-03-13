@@ -10,7 +10,7 @@
   poll: 0
   register: visio_sleeper
 
-- name: check on office download
+- name: Check on Visio download
   async_status: jid={{ visio_sleeper.ansible_job_id }}
   register: job_result
   until: job_result.finished
@@ -24,7 +24,7 @@
   poll: 0
   register: office_sleeper
 
-- name: check on office download
+- name: Check on Office 365 download
   async_status: jid={{ office_sleeper.ansible_job_id }}
   register: job_result
   until: job_result.finished

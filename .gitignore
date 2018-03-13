@@ -1,2 +1,5 @@
+# Windows.yml
+group_vars/windows.yml
+
 # Ansible retry files
 *.retry
