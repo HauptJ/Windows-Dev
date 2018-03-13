@@ -93,6 +93,11 @@
     name: steam
     state: latest
 
+- name: Install the latest version of Spotify
+  win_chocolatey:
+    name: spotify
+    state: latest
+
 - name: Install the latest version of Teamviewer
   win_chocolatey:
     name: teamviewer
