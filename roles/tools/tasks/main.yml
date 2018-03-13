@@ -1,12 +1,6 @@
 ---
   # Installs various tools and utilities
 
-# Replaced with git role
-#- name: Install the latest version of git
-#  win_chocolatey:
-#    name: git
-#    state: latest
-
 - name: Install the latest version of openssh
   win_chocolatey:
     name: openssh
@@ -23,9 +17,16 @@
     state: latest
 
 - name: Install the latest version of winsshterm
-  win_chocolatey:
-    name: winsshterm
-    state: latest
+  block:
+    - name: Install the latest version of winsshterm
+      win_chocolatey:
+        name: winsshterm
+        state: latest
+
+    - name: Copy required executables for WinSSHTerm to {{ temp_dir }}
+      win_copy:
+        src: files/
+        dest: {{ temp_dir }}
 
 - name: Install the latest version of curl
   win_chocolatey:
