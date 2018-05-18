@@ -1,6 +1,8 @@
 ---
   # System settings, users, etc
 
+##### Power Settings #####
+
 - name: Copy file to configure power settings
   win_copy:
     src: files/powercfg.ps1
@@ -9,21 +11,77 @@
 - name: Execute powercfg.ps1
   win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}powercfg.ps1"
 
-- name: Copy file to configure time and date settings
-  win_copy:
-    src: files/timecfg.ps1
-    dest: "{{ temp_dir }}"
+##### Time Settings #####
 
-- name: Execute timecfg.ps1
-  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}timecfg.ps1"
+# - name: Copy file to configure time and date settings
+#   win_copy:
+#     src: files/timecfg.ps1
+#     dest: "{{ temp_dir }}"
+#
+# - name: Execute timecfg.ps1
+#   win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}timecfg.ps1"
 
-- name: Copy file to configure explorer settings
-  win_copy:
-    src: files/explorercfg.ps1
-    dest: "{{ temp_dir }}"
+- name: Set timezone to 'Central Standard Time' (GMT-06:00)
+  win_timezone:
+    timezone: Central Standard Time
 
-- name: Execute explorercfg.ps1
-  win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}explorercfg.ps1" -Force
+- name: Set Short date format
+  win_regedit:
+    path: HKCU:\Control Panel\International
+    name: sShortDate
+    data: dd-MMM-yy
+
+- name: Set Long date format
+  win_regedit:
+    path: HKCU:\Control Panel\International
+    name: sLongDate
+    data: dddd-MMMM-yyyy
+
+- name: Set Short time format
+  win_regedit:
+    path: HKCU:\Control Panel\International
+    name: sShortTime
+    data: HH:mm
+
+- name: Set Long time format
+  win_regedit:
+    path: HKCU:\Control Panel\International
+    name: sTimeFormat
+    data: HH:mm:ss
+
+##### Explorer Settings #####
+
+# - name: Copy file to configure explorer settings
+#   win_copy:
+#     src: files/explorercfg.ps1
+#     dest: "{{ temp_dir }}"
+#
+# - name: Execute explorercfg.ps1
+#   win_shell: powershell -ExecutionPolicy Unrestricted -File "{{ temp_dir }}explorercfg.ps1" -Force
+
+- name: Show hidden files, folders, and drives
+  win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    name: Hidden
+    data: 1
+    type: dword
+
+- name: Hide extensions for known file types
+  win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    name: HideFileExt
+    data: 0
+    type: dword
+
+- name: Hide protected operating system files (Recommended)
+  win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    name: ShowSuperHidden
+    data: 1
+    type: dword
+
+- name: Restart explorer
+  win_command: Stop-Process -processname explorer
 
 - name: Install Chocolatey
   win_shell: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))

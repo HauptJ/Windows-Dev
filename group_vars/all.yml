@@ -2,13 +2,10 @@ temp_dir: C:\WINRM\
 
 office_retries: 600
 
-GCLOUD: true
 NVIDIA_GPU: true
 
 git_user_name: Bob Example
 git_user_email: bob@example.com
-
-
 
 
 #win_update_categories:

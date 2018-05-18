@@ -22,17 +22,12 @@
   with_items:
     - docker-for-windows
     - docker-compose
-    - kubernetes-cli
     - minikube
-    - kubernetes-kompose
-    - kubernetes-helm
 
-# This may break kubernetes-cli???
 - name: Install the latest version of Google Cloud SDK
   win_chocolatey:
     name: gcloudsdk
     state: latest
-  when: GCLOUD == true
 
 - name: Install the latest and greatest HashiCorp utilities
   win_chocolatey:
@@ -43,22 +38,3 @@
     - packer
     - terraform
     - vault
-
-- name: Install the OpenStack CLI
-  win_command: pip install python-openstackclient
-
-- name: Install the AWS CLI
-  win_command: pip install awscli
-
-- name: Install CloudFlare API
-  win_command: pip install cloudflare
-
-- name: Install Digitalocean Python API
-  win_command: pip install dopy
-
-# Broken, Docker needs to be running for this to work
-#- name: Download Ansible Docker
-#  win_shell: docker pull hauptj/ansible-fedora-27
-#  args:
-#    chdir: "{{ temp_dir }}"
-#  ignore_errors: True

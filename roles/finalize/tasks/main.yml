@@ -7,13 +7,6 @@
     state: latest
   when: NVIDIA_GPU == true
 
-# Package Broken
-#- name: Install the latest version of Geforce Experience
-#  win_chocolatey:
-#    name: geforce-experience
-#    state: latest
-#  when: NVIDIA_GPU == true
-
 - name: Copy file to disable Autologin of Administrator account
   win_copy:
     src: files/DisableAutoLogin.ps1

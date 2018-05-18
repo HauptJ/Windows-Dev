@@ -5,28 +5,29 @@
   win_chocolatey:
     name: openssh
     state: latest
+    params: SSHAgentFeature
 
-- name: Install the latest version of cmder
-  win_chocolatey:
-    name: cmder
-    state: latest
-
-- name: Install the latest version of conemu
-  win_chocolatey:
-    name: conemu
-    state: latest
-
-- name: Install the latest version of winsshterm
-  block:
-    - name: Install the latest version of winsshterm
-      win_chocolatey:
-        name: winsshterm
-        state: latest
-
-    - name: Copy required executables for WinSSHTerm to {{ temp_dir }}
-      win_copy:
-        src: winsshterm/
-        dest: "{{ temp_dir }}"
+# - name: Install the latest version of cmder
+#   win_chocolatey:
+#     name: cmder
+#     state: latest
+#
+# - name: Install the latest version of conemu
+#   win_chocolatey:
+#     name: conemu
+#     state: latest
+#
+# - name: Install the latest version of winsshterm
+#   block:
+#     - name: Install the latest version of winsshterm
+#       win_chocolatey:
+#         name: winsshterm
+#         state: latest
+#
+#     - name: Copy required executables for WinSSHTerm to {{ temp_dir }}
+#       win_copy:
+#         src: winsshterm/
+#         dest: "{{ temp_dir }}"
 
 - name: Install the latest version of curl
   win_chocolatey:
@@ -48,7 +49,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - sumatrapdf
+    - sumatrapdf.install
     - pdfcreator
 
 - name: Install the latest version of calibre
@@ -105,8 +106,7 @@
     name: teamviewer
     state: latest
 
-# Broken as of 12.3.2018
-#- name: Install the latest version of Skype
-#  win_chocolatey:
-#    name: skype
-#    state: latest
+- name: Install the latest version of Skype
+  win_chocolatey:
+    name: skype
+    state: latest

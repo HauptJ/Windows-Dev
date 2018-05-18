@@ -6,8 +6,8 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - python3
     - python2
+    - python3
 
 - name: Install the latest version of Ruby
   win_chocolatey:

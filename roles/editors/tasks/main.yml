@@ -11,10 +11,10 @@
     name: notepadplusplus
     state: latest
 
-- name: Install the latest version of Netbeans
-  win_chocolatey:
-    name: netbeans
-    state: latest
+# - name: Install the latest version of Netbeans
+#   win_chocolatey:
+#     name: netbeans
+#     state: latest
 
 - name: Install the latest version of Vim
   win_chocolatey:
