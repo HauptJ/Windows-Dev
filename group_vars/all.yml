@@ -4,8 +4,8 @@ office_retries: 600
 
 NVIDIA_GPU: true
 
-git_user_name: Bob Example
-git_user_email: bob@example.com
+git_user_name: Joshua Haupt
+git_user_email: joshua@hauptj.com
 
 
 #win_update_categories:

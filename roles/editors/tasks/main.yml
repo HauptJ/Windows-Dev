@@ -10,29 +10,3 @@
   win_chocolatey:
     name: notepadplusplus
     state: latest
-
-# - name: Install the latest version of Netbeans
-#   win_chocolatey:
-#     name: netbeans
-#     state: latest
-
-- name: Install the latest version of Vim
-  win_chocolatey:
-    name: vim
-    state: latest
-
-- name: Install the latest version of visualstudio2017enterprise
-  win_chocolatey:
-    name: visualstudio2017enterprise
-    state: latest
-
-# miktex package is currently broken - still as of 10.3.18
-#- name: Install the latest version of TexStudio
-#  win_chocolatey:
-#    name: texstudio
-#    state: latest
-
-#- name: Install the latest version of texmaker
-#  win_chocolatey:
-#    name: texmaker
-#    state: latest

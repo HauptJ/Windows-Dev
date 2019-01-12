@@ -9,8 +9,6 @@
 
   roles:
     - initialize
-    - office
-    - libraries
     - tools
     - git
     - editors

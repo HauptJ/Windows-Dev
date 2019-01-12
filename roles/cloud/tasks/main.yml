@@ -14,27 +14,3 @@
       reboot_timeout_sec: 3600
       connect_timeout_sec: 3600
       shutdown_timeout_sec: 3600
-
-- name: Install the latest and greatest container tools
-  win_chocolatey:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - docker-for-windows
-    - docker-compose
-    - minikube
-
-- name: Install the latest version of Google Cloud SDK
-  win_chocolatey:
-    name: gcloudsdk
-    state: latest
-
-- name: Install the latest and greatest HashiCorp utilities
-  win_chocolatey:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - vagrant
-    - packer
-    - terraform
-    - vault
